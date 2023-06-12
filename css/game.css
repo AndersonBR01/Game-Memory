@@ -11,6 +11,7 @@ body{
     width: 100%;
     max-width: 800px;
     margin: 100px auto;
+    
 
 }
 
@@ -21,7 +22,7 @@ body{
     position: relative;
     transition: all 400ms ease;
     transform-style: preserve-3d;
-
+    
 }
 
 .face {
@@ -32,19 +33,26 @@ body{
     background-position: center;
     border: 2px solid darkred;
     border-radius: 5px;
+
+    transition: all 600ms ease;
 }
 
 .front{
-    background-image: url(../img/img-002.jpg);
+    
     transform: rotateY(180deg);
     
 }
 
 .back {
-    background-image: url(../img/icon.png);
+    background-image: url(../img/back.jpg);
     backface-visibility: hidden;
 }
 
-.card:hover {
+.reveal-card {
     transform: rotateY(180deg);
+}
+
+.disabled-card {
+    filter: saturate(0);
+    opacity: 0.5;
 }
