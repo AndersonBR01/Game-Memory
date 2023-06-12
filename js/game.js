@@ -1,4 +1,7 @@
 const grid =  document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const spanTimer = document.querySelector('.timer');
+
 
 const characters = [
     'img-001',
@@ -28,7 +31,10 @@ const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
     if (disabledCards.length === 24){
-        //window.location= '../pages/parabens.html'
+        clearInterval(this.loop);
+        alert(`Parabéns, ${spanPlayer.innerHTML}!Seu tempo foi de ${spanTimer.innerHTML}. Prossega!!`);
+
+        window.location= '../pages/parabens.html'
     }
 }
 const checkCards = () =>{
@@ -106,5 +112,24 @@ const loadGame = () =>{
         const card = createCard(character);
         grid.appendChild(card);
     });
-}
-loadGame();
+};
+
+const startTime = () =>{
+
+    this.loop =  setInterval(() =>{
+        const currentTime = + spanTimer.innerHTML;
+        spanTimer.innerHTML = currentTime + 1;
+
+    },1000);
+};
+
+window.onload = () =>{
+
+    spanPlayer.innerHTML= localStorage.getItem('player');
+
+    startTime();
+    loadGame();
+
+};
+
+
